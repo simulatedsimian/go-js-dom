@@ -106,7 +106,9 @@
 //
 // If you depend on none of the APIs changing unexpectedly, you're
 // advised to vendor this package.
-package dom // import "honnef.co/go/js/dom"
+package dom
+
+// restore before flight:::  import "honnef.co/go/js/dom"
 
 import (
 	"strings"
@@ -2022,7 +2024,7 @@ func (ctx *CanvasRenderingContext2D) IsPointInPath(x, y int) bool {
 
 // Transformations
 
-func (ctx *CanvasRenderingContext2D) Scale(scaleWidth, scaleHeight int) {
+func (ctx *CanvasRenderingContext2D) Scale(scaleWidth, scaleHeight float64) {
 	ctx.Call("scale", scaleWidth, scaleHeight)
 }
 
@@ -2030,16 +2032,16 @@ func (ctx *CanvasRenderingContext2D) Rotate(angle float64) {
 	ctx.Call("rotate", angle)
 }
 
-func (ctx *CanvasRenderingContext2D) Translate(x, y int) {
+func (ctx *CanvasRenderingContext2D) Translate(x, y float64) {
 	ctx.Call("translate", x, y)
 }
 
-func (ctx *CanvasRenderingContext2D) Transform(a, b, c, d, e, f int) {
-	ctx.Call("transform", a, b, c, d, e, f)
+func (ctx *CanvasRenderingContext2D) Transform(m11, m12, m21, m22, dx, dy float64) {
+	ctx.Call("transform", m11, m12, m21, m22, dx, dy)
 }
 
-func (ctx *CanvasRenderingContext2D) SetTransform(a, b, c, d, e, f int) {
-	ctx.Call("setTransform", a, b, c, d, e, f)
+func (ctx *CanvasRenderingContext2D) SetTransform(m11, m12, m21, m22, dx, dy float64) {
+	ctx.Call("setTransform", m11, m12, m21, m22, dx, dy)
 }
 
 // Text
