@@ -2044,6 +2044,20 @@ func (ctx *CanvasRenderingContext2D) SetTransform(m11, m12, m21, m22, dx, dy flo
 	ctx.Call("setTransform", m11, m12, m21, m22, dx, dy)
 }
 
+// Image
+
+func (ctx *CanvasRenderingContext2D) DrawImage(img *js.Object, dx, dy float64) {
+	ctx.Call("drawImage", img, dx, dy)
+}
+
+func (ctx *CanvasRenderingContext2D) DrawImageScaled(img *js.Object, dx, dy, dw, dh float64) {
+	ctx.Call("drawImage", img, dx, dy, dw, dh)
+}
+
+func (ctx *CanvasRenderingContext2D) DrawImageSection(img *js.Object, sx, sy, sw, sh, dx, dy, dw, dh float64) {
+	ctx.Call("drawImage", img, sx, sy, sw, sh, dx, dy, dw, dh)
+}
+
 // Text
 
 func (ctx *CanvasRenderingContext2D) FillText(text string, x, y, maxWidth int) {
